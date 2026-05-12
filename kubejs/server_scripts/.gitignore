@@ -1,0 +1,16 @@
+﻿#  системні та тимчасові файли
+logs/
+crash-reports/
+world/
+saves/
+screenshots/
+resourcepacks/
+shaderpacks/
+.mixin.out/
+local/
+
+#папки для розробки
+kubejs/probe/
+kubejs/exported/
+.vscode/
+.probe/
