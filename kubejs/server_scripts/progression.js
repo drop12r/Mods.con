@@ -1,25 +1,70 @@
-﻿// Реєструємо подію для серверних рецептів
-ServerEvents.recipes(event => {
+﻿ServerEvents.recipes(event => {
 
-    // 1. Видаляємо стандартний рецепт верстака (Vanilla)
+    // 1. Видаляємо стандартних рецепт
     event.remove({ output: 'minecraft:crafting_table' })
+    event.remove({ output: 'minecraft:stonecutter' })
+    event.remove({ output: 'minecraft:cartography_table' })
+    event.remove({ output: 'minecraft:fletching_table' })
+    event.remove({ output: 'minecraft:smithing_table' })
+    event.remove({ output: 'minecraft:grindstone' })
+    event.remove({ output: 'minecraft:loom' })
+    event.remove({ output: 'minecraft:furnace' })
+    event.remove({ output: 'minecraft:black_furnace' })
+    event.remove({ output: 'minecraft:deepslate_furnace' })
+    event.remove({ output: 'minecraft:smoker' })
+    event.remove({ output: 'minecraft:blast_furnace' })
+    event.remove({ output: 'minecraft:enchanting_table' })
+    event.remove({ output: 'minecraft:brewing_stand' })
+    event.remove({ output: 'minecraft:chest'})
+    event.remove({ output: 'minecraft:barrel' })
+    event.remove({ output: 'minecraft:ender_chest' })
+    event.remove({ output: 'minecraft:shulker_box' })
+    event.remove({ output: 'minecraft:lectern' })
 
-    // 2. Додаємо новий, складніший рецепт
-    // Використовуємо знання JSON для опису інгредієнтів
-    event.shaped(
-        'minecraft:crafting_table', // Що отримуємо
-        [
-            'AA',
-            'BB'
-        ],
-        {
-            A: '#minecraft:logs',     // Будь-яка колода (тег)
-            B: 'minecraft:flint'      // Кремінь
-        }
-    )
+    // Видалив зброю + броню
+    event.remove({ output: /^minecraft:.*_(sword|axe|pickaxe|shovel|hoe)$/ })
+    event.remove({ output: 'minecraft:bow' })
+    event.remove({ output: 'minecraft:crossbow' })
+    event.remove({ output: 'minecraft:shield' })
 
-    // Додатково: приклад безформного крафта (Shapeless)
-    // Дозволяємо "розібрати" верстак назад на 4 дошки
-    event.shapeless('4x minecraft:oak_planks', ['minecraft:crafting_table'])
+    const armorTypes = ['helmet', 'chestplate', 'leggings', 'boots']
+    const materials = ['leather', 'chainmail', 'iron', 'golden', 'diamond', 'netherite']
 
+    materials.forEach(mat => {
+        armorTypes.forEach(type => {
+            event.remove({ output: `minecraft:${mat}_${type}` })
+        })
+    })
+
+
+    // Видалив всю їжу
+    const vanillaFood = [
+        'minecraft:apple', 'minecraft:bread', 'minecraft:cooked_beef', 'minecraft:beef',
+        'minecraft:cooked_chicken', 'minecraft:chicken', 'minecraft:cooked_porkchop', 'minecraft:porkchop',
+        'minecraft:cooked_mutton', 'minecraft:mutton', 'minecraft:cooked_rabbit', 'minecraft:rabbit',
+        'minecraft:cooked_cod', 'minecraft:cod', 'minecraft:cooked_salmon', 'minecraft:salmon',
+        'minecraft:potato', 'minecraft:baked_potato', 'minecraft:carrot', 'minecraft:golden_carrot',
+        'minecraft:golden_apple', 'minecraft:enchanted_golden_apple', 'minecraft:pumpkin_pie', 'minecraft:cookie'
+    ]
+    vanillaFood.forEach(food => event.remove({ output: food }))
+
+    // Це приберая звичайну скриню, скриню-пастку, ендер-скриню та бочки
+    event.remove({ output: /.*chest$/ })
+    event.remove({ output: 'minecraft:barrel' })
+
+
+})
+
+// iceandfire
+ServerEvents.recipes(event => {
+    // Видалив всі рецепти з моду iceandfire:
+    // sword, axe, pickaxe, shovel, hoe, bow, flail, rapier, dagger
+    event.remove({
+        mod: 'iceandfire',
+        output: /.*_(sword|axe|pickaxe|shovel|hoe|bow|flail|rapier|dagger)$/
+    })
+    event.remove({ output: 'iceandfire:dragonbone_arrow' })
+    event.remove({ output: 'iceandfire:hippogryph_sword' })
+    event.remove({ output: 'iceandfire:lich_staff' })
+    event.remove({ output: 'iceandfire:hydra_arrows' })
 })
