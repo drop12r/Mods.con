@@ -20,6 +20,7 @@
     event.remove({ output: 'minecraft:ender_chest' })
     event.remove({ output: 'minecraft:shulker_box' })
     event.remove({ output: 'minecraft:lectern' })
+    event.remove({ output: 'minecraft: '})
 
     // Видалив зброю + броню
     event.remove({ output: /^minecraft:.*_(sword|axe|pickaxe|shovel|hoe)$/ })
@@ -55,9 +56,9 @@
 
 })
 
-// iceandfire
+// ice and fire
 ServerEvents.recipes(event => {
-    // Видалив всі рецепти з моду iceandfire:
+    // Видалив всі рецепти з моду ice and fire:
     // sword, axe, pickaxe, shovel, hoe, bow, flail, rapier, dagger
     event.remove({
         mod: 'iceandfire',
@@ -68,3 +69,10 @@ ServerEvents.recipes(event => {
     event.remove({ output: 'iceandfire:lich_staff' })
     event.remove({ output: 'iceandfire:hydra_arrows' })
 })
+    ServerEvents.recipes(event => {
+
+        event.remove({
+            mod: 'Apotheosis',
+            output: /.*_(geme|sockets|malice)$/
+        })
+    })
