@@ -73,6 +73,6 @@ ServerEvents.recipes(event => {
 
         event.remove({
             mod: 'Apotheosis',
-            output: /.*_(geme|sockets|malice)$/
+            output: /.*_(gem|sockets|malice|vial|material|sigil|upgrade)$/
         })
     })
