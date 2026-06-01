@@ -1,6 +1,10 @@
-﻿ServerEvents.recipes(event => {
+﻿//Remove crafts
+// F3+H in game to see object's ID or Teg.
+//In game world write command: /reload to save it in world.
 
-    // 1. Видаляємо стандартних рецепт
+ServerEvents.recipes(event => {
+
+    // Видаляємо стандартних рецепт
     event.remove({ output: 'minecraft:crafting_table' })
     event.remove({ output: 'minecraft:stonecutter' })
     event.remove({ output: 'minecraft:cartography_table' })
@@ -69,7 +73,7 @@ ServerEvents.recipes(event => {
     event.remove({ output: 'iceandfire:lich_staff' })
     event.remove({ output: 'iceandfire:hydra_arrows' })
 })
-    ServerEvents.recipes(event => {
+ServerEvents.recipes(event => {
 
         event.remove({
             mod: 'Apotheosis',
