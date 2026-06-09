@@ -15,11 +15,11 @@ ServerEvents.recipes(event => {
 
 ServerEvents.recipes(event => {
     event.shaped(
-        '2x create:mechanical_crafter', //
-        [//(# - empty)
-            'SA ', // First r
-            'AA ', // Second row
-            '   '  // Third row
+        '2x create:mechanical_crafter',
+        [
+            'SA ',
+            'AA ',
+            '   '
         ],
         {
             S: 'minecraft:hopper',
@@ -27,11 +27,11 @@ ServerEvents.recipes(event => {
         }
     )
     event.shaped(
-        '1x minecraft:hopper', //
-        [//(# - empty)
-            'SAS', // First r
-            ' S ', // Second row
-            '   '  // Third row
+        '1x minecraft:hopper',
+        [
+            'SAS',
+            ' S ',
+            '   '
         ],
         {
             S: 'minecraft:iron_ingot',
