@@ -3,8 +3,7 @@
 //In game world write command: /reload to save it in world.
 
 ServerEvents.recipes(event => {
-
-    // Видаляємо стандартних рецепт
+    // 1. Видаляє стандартних рецепт
     event.remove({ output: 'minecraft:crafting_table' })
     event.remove({ output: 'minecraft:stonecutter' })
     event.remove({ output: 'minecraft:cartography_table' })
@@ -24,13 +23,14 @@ ServerEvents.recipes(event => {
     event.remove({ output: 'minecraft:ender_chest' })
     event.remove({ output: 'minecraft:shulker_box' })
     event.remove({ output: 'minecraft:lectern' })
-    event.remove({ output: 'minecraft: '})
+    event.remove({ output: 'minecraft:hopper' })
 
-    // Видалив зброю + броню
+    // Видаляє зброю + броню
     event.remove({ output: /^minecraft:.*_(sword|axe|pickaxe|shovel|hoe)$/ })
     event.remove({ output: 'minecraft:bow' })
     event.remove({ output: 'minecraft:crossbow' })
     event.remove({ output: 'minecraft:shield' })
+
 
     const armorTypes = ['helmet', 'chestplate', 'leggings', 'boots']
     const materials = ['leather', 'chainmail', 'iron', 'golden', 'diamond', 'netherite']
@@ -41,8 +41,7 @@ ServerEvents.recipes(event => {
         })
     })
 
-
-    // Видалив всю їжу
+    // Видаляє всю їжу
     const vanillaFood = [
         'minecraft:apple', 'minecraft:bread', 'minecraft:cooked_beef', 'minecraft:beef',
         'minecraft:cooked_chicken', 'minecraft:chicken', 'minecraft:cooked_porkchop', 'minecraft:porkchop',
@@ -53,16 +52,16 @@ ServerEvents.recipes(event => {
     ]
     vanillaFood.forEach(food => event.remove({ output: food }))
 
-    // Це приберая звичайну скриню, скриню-пастку, ендер-скриню та бочки
+    // Видаляє скриню, скриню-пастку, ендер-скриню та бочки
     event.remove({ output: /.*chest$/ })
     event.remove({ output: 'minecraft:barrel' })
 
 
 })
 
-// ice and fire
+// iceandfire
 ServerEvents.recipes(event => {
-    // Видалив всі рецепти з моду ice and fire:
+    // Видаляє всі рецепти з моду iceandfire:
     // sword, axe, pickaxe, shovel, hoe, bow, flail, rapier, dagger
     event.remove({
         mod: 'iceandfire',
@@ -73,10 +72,26 @@ ServerEvents.recipes(event => {
     event.remove({ output: 'iceandfire:lich_staff' })
     event.remove({ output: 'iceandfire:hydra_arrows' })
 })
-ServerEvents.recipes(event => {
 
-        event.remove({
-            mod: 'Apotheosis',
-            output: /.*_(gem|sockets|malice|vial|material|sigil|upgrade)$/
-        })
+ServerEvents.recipes(event => {
+    event.remove({
+        mod: 'Apotheosis',
+        output: /.*_(gem|sockets|malice|vial|material|sigil|upgrade)$/
     })
+})
+
+ServerEvents.recipes(event => {
+    event.remove({output: 'create:mechanical_crafter'})
+})
+ServerEvents.recipes(event => {
+    event.remove({
+        mod: 'twilightforest',
+        output: /.*_(sword|axe|pickaxe|shovel|hoe|bow|flail|rapier|dagger)$/
+    })
+})
+ServerEvents.recipes(event => {
+    event.remove({output: 'naturesaura:pet_reviver'})
+    event.remove({output: 'naturesaura:eye'})
+    event.remove({output: 'naturesaura:eye_improved'})
+    event.remove({output: 'naturesaura:shockwave_creator'})
+})

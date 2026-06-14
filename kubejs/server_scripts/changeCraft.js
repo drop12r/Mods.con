@@ -27,7 +27,7 @@ ServerEvents.recipes(event => {
         }
     )
     event.shaped(
-        '1x minecraft:hopper',
+        '1x minecraft:hopper', //
         [
             'SAS',
             ' S ',
@@ -36,6 +36,38 @@ ServerEvents.recipes(event => {
         {
             S: 'minecraft:iron_ingot',
             A: 'minecraft:lever'
+        }
+    )
+    event.shaped(
+        '1x naturesaura:shockwave_creator', //
+        [
+            'NAN',
+            'SBS',
+            'VMV'
+        ],
+        {
+            N: 'ars_nouveau:dull_trinket',
+            A: 'naturesaura:token_rage',
+            S: 'naturesaura:infused_stone',
+            B: 'minecraft:tnt',
+            M: 'minecraft:diamond_boots',
+            V: 'naturesaura:tainted_gold',
+        }
+    )
+    event.shaped(
+        '1x naturesaura:pet_reviver', //
+        [
+            'MAV',
+            'SBS',
+            'NAN'
+        ],
+        {
+            N: 'ars_nouveau:dull_trinket',
+            A: 'minecraft:gold_ingot',
+            S: 'naturesaura:sky_ingot',
+            B: 'minecraft:bone',
+            M: 'naturesaura:token_grief',
+            V: 'naturesaura:token_joy',
         }
     )
 })
